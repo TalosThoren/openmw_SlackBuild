@@ -1,0 +1,11 @@
+# Vim generated files
+*~
+*.swp
+
+# Source files
+openmw-*tar.*
+
+# Generated files
+_tmp/
+*.tar.gz
+openmw/
