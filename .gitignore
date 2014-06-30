@@ -7,5 +7,7 @@ openmw-*tar.*
 
 # Generated files
 _tmp/
-*.tar.gz
 openmw/
+
+#Source and generated files
+*.tar.gz

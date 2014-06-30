@@ -1,0 +1,3 @@
+OpenMW is a new and modern engine based on the one that runs the 2002 open-world RPG Morrowind. The engine (OpenMW) will come with its own editor (OpenCS) which will allow the user to edit or create their own games. Both OpenCS and OpenMW are written from scratch and aren't made to support any third party programs the original Morrowind engine uses to improve its functionality.
+
+This package requires a copy of the ogre libraries to be linked with one of its optional libraries, FreeImage, in order to compile. In order to be sure the ogre libraries link to the FreeImage libraries be sure to install FreeImage first. If you already have ogre installed you may need to rebuild and reinstall the ogre package after installing FreeImage.
