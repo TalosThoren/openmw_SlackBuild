@@ -1,5 +1,5 @@
 PRGNAM="openmw"
-VERSION="0.29.0"
+VERSION="0.30.0"
 HOMEPAGE="https://openmw.org"
 DOWNLOAD="https://github.com/OpenMW/openmw/archive/openmw-0.30.0.tar.gz"
 MD5SUM="e58c202827cfac045031cb82ae5f118d"
