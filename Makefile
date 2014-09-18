@@ -29,7 +29,7 @@ TMP_DIR := ${CURDIR}/_tmp/${APP_NAME}
 CHECK_DIR := ${CURDIR}/_dist
 SOURCE_URL_32 := `awk -F'"' '/DOWNLOAD=/ {print $$2}' ${APP_NAME}.info`
 SOURCE_URL_64 := `awk -F'"' '/DOWNLOAD_x86_64/ {print $$2}' ${APP_NAME}.info`
-VERSION := 0.31.0
+VERSION := 0.32.0
 SOURCE_ARCHIVE := ${APP_NAME}-${VERSION}.tar.gz
 
 default: dist
