@@ -29,15 +29,17 @@ TMP_DIR := ${CURDIR}/_tmp/${APP_NAME}
 CHECK_DIR := ${CURDIR}/_dist
 SOURCE_URL_32 := `awk -F'"' '/DOWNLOAD=/ {print $$2}' ${APP_NAME}.info`
 SOURCE_URL_64 := `awk -F'"' '/DOWNLOAD_x86_64/ {print $$2}' ${APP_NAME}.info`
-VERSION := 0.34.0
+EXPECTED_SOURCE_MD5 := `awk -F'"' '/MD5SUM/ {print $$2}' ${APP_NAME}.info`
+VERSION := 0.35.1
 SOURCE_ARCHIVE := ${APP_NAME}-${VERSION}.tar.gz
+SOURCE_MD5 = `md5sum ${SOURCE_ARCHIVE} | cut -d ' ' -f 1`
 
 default: dist
 
 check: getsource
 	sh ./${APP_NAME}.SlackBuild
 
-distcheck: dist getsource
+distcheck: dist checksource
 	-mkdir ${CHECK_DIR}
 	-cp ${ARCHIVE_NAME} ${CHECK_DIR}
 	cd ${CHECK_DIR} && tar xvzf ${ARCHIVE_NAME}
@@ -45,6 +47,13 @@ distcheck: dist getsource
 	cd ${CHECK_DIR}/${APP_NAME} && sh ./${APP_NAME}.SlackBuild
 	${MAKE} clean
 
+checksource: getsource
+	if [ "${EXPECTED_SOURCE_MD5}" == "${SOURCE_MD5}" ]; then\
+		echo "ARCHIVE MD5SUM PASSED!";\
+	else\
+	 echo "ERROR: ARCHIVE MD5SUM FAILED! EXITING!"; exit 1;\
+	fi
+		
 getsource:
 	if [ ! -e ${SOURCE_ARCHIVE} ]; then\
 		if [[ ("${ARCH}" = "x86_64") && (-n "${SOURCE_URL_64}") ]]; then\
