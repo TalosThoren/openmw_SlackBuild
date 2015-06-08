@@ -48,14 +48,14 @@ distcheck: dist checksource
 	${MAKE} clean
 
 checksource: getsource
-	if [ "${EXPECTED_SOURCE_MD5}" == "${SOURCE_MD5}" ]; then\
+	@if [ "${EXPECTED_SOURCE_MD5}" == "${SOURCE_MD5}" ]; then\
 		echo "ARCHIVE MD5SUM PASSED!";\
 	else\
 	 echo "ERROR: ARCHIVE MD5SUM FAILED! EXITING!"; exit 1;\
 	fi
 		
 getsource:
-	if [ ! -e ${SOURCE_ARCHIVE} ]; then\
+	@if [ ! -e ${SOURCE_ARCHIVE} ]; then\
 		if [[ ("${ARCH}" = "x86_64") && (-n "${SOURCE_URL_64}") ]]; then\
 			wget "${SOURCE_URL_64}";\
 		else\
