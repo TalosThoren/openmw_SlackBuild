@@ -30,7 +30,7 @@ CHECK_DIR := ${CURDIR}/_dist
 SOURCE_URL_32 := `awk -F'"' '/DOWNLOAD=/ {print $$2}' ${APP_NAME}.info`
 SOURCE_URL_64 := `awk -F'"' '/DOWNLOAD_x86_64/ {print $$2}' ${APP_NAME}.info`
 EXPECTED_SOURCE_MD5 := `awk -F'"' '/MD5SUM/ {print $$2}' ${APP_NAME}.info`
-VERSION := 0.40.0
+VERSION := 0.41.0
 SOURCE_ARCHIVE := ${APP_NAME}-${VERSION}.tar.gz
 SOURCE_MD5 = `md5sum ${SOURCE_ARCHIVE} | cut -d ' ' -f 1`
 
